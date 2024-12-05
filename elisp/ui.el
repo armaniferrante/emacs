@@ -3,6 +3,8 @@
   :ensure t)
 (column-number-mode 1)
 
+(load-theme 'atom-one-dark t)
+
 ;; Transparent window.
 ;(set-frame-parameter (selected-frame) 'alpha '(99 . 99))
 ;(add-to-list 'default-frame-alist '(alpha . (99 . 99)))
@@ -36,8 +38,8 @@
 (global-hl-line-mode +1)
 
 ;; Create matching brackets/parenthesis automatically.
-(use-package autopair
-  :ensure t)
+;(use-package autopair
+;  :ensure t)
 
 ;; Open shell in same window.
 (add-to-list 'display-buffer-alist

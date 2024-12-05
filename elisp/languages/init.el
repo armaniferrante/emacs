@@ -3,7 +3,7 @@
   ;; Max line length.
   (turn-on-auto-fill)
   ;; Add matching paren/bracket automatically.
-  (autopair-mode)
+  ; (autopair-mode)
   ;; Draw line at max line length.
   (fci-mode 1))
 

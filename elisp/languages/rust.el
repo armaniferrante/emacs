@@ -11,9 +11,11 @@
   :ensure t)
 
 ; curl https://sh.rustup.rs -sSf | sh
+; rustup component add rustc-dev --toolchain=nightly
 ; rustup component add rust-src
 ; cargo install racer
-;; See https://github.com/racer-rust/racer.
+;; See https://github.com/racer-rust/racer
+;; for the full installation instructions.
 (use-package racer
   :ensure t)
 
@@ -46,4 +48,12 @@
 ;;
 ;; To find: echo `rustc --print sysroot`/lib/rustlib/src/rust/src.
 ;(setq racer-rust-src-path "/home/armaniferrante/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")
-(setq racer-rust-src-path "/home/armaniferrante/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")
+																				;(setq racer-rust-src-path "/home/armaniferrante/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")
+																				;(setq racer-rust-src-path "/Users/armaniferrante/.rustup/toolchains/stable-aarch64-apple-darwin/lib/rustlib/src/rust/src")
+(setq racer-rust-src-path
+      (let* ((sysroot (string-trim
+                       (shell-command-to-string "rustc --print sysroot")))
+             (lib-path (concat sysroot "/lib/rustlib/src/rust/library"))
+              (src-path (concat sysroot "/lib/rustlib/src/rust/src")))
+        (or (when (file-exists-p lib-path) lib-path)
+            (when (file-exists-p src-path) src-path))))

@@ -26,3 +26,6 @@
 
 (setq backup-directory-alist '((".*" . "~/.Trash")))
 (setq create-lockfiles nil)
+
+(setq mac-command-key-is-meta t
+      mac-command-modifier 'meta)
